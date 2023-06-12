@@ -4,6 +4,16 @@
       "name": "Test Deck 1",
       "description": "First deck for testing",
       "id": 1
+    },
+    {
+      "name": "Test Deck 2",
+      "description": "Second deck for testing",
+      "id": 2
+    },
+    {
+      "name": "Test Deck 3",
+      "description": "Third and final testing desk",
+      "id": 3
     }
   ],
   "cards": []
