@@ -2,7 +2,7 @@ import React from "react"
 import { Switch, Route, Link} from 'react-router-dom'
 import Header from "./Header"
 import NotFound from "./NotFound"
-import Home from './Home'
+import Home from '../pages/Home'
 
 function Layout() {
   return (
