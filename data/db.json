@@ -1,4 +1,10 @@
 {
-  "decks": [],
+  "decks": [
+    {
+      "name": "Test Deck 1",
+      "description": "First deck for testing",
+      "id": 1
+    }
+  ],
   "cards": []
 }
