@@ -4,6 +4,7 @@ import { listDecks } from '../utils/api/index'
 
 function Home () {
     const [decks, setDecks] = useState([])
+    const [cards, setCards] = useState([])
 
     useEffect(() => {
         const loadDecks = async () => {
@@ -15,21 +16,30 @@ function Home () {
 
     const deckList = decks.map((deck, i) => {
         return (
-            <li key={i}>
-                <h3>{deck.name}</h3>
-                <p>{`${i} cards`}</p>
-                <p>{deck.description}</p>
-                <button>View</button>
-                <button>Study</button>
-                <button>Delete</button>
+            <li className='card border-dark my-3 w-75' key={i}>
+                <div className="card-header text-center">
+                    <h3 className="card-title">{deck.name}</h3>
+                    <p className="card-subtitle">{`${deck.cards.length} cards`}</p>
+                </div>
+                <div className="card-body">
+                    <p className="card-text">{deck.description}</p>
+                </div>
+                <div className="card-footer">
+                    <div className="row justify-content-around align-middle">
+                        <button className="btn btn-secondary">View</button>
+                        <button className='btn btn-primary'>Study</button>
+                        <button className="btn btn-danger">Delete</button>
+                    </div>
+                </div>
+                    
             </li>
         )
     })
 
     return (
         <>
-        <button>Create Deck</button>
-        <ul>{deckList}</ul>
+        <button className="btn btn-dark">Create Deck</button>
+        <ul className="list-unstyled card-deck">{deckList}</ul>
         </>
     )
 }
