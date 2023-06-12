@@ -4,7 +4,6 @@ import { listDecks } from '../utils/api/index'
 
 function Home () {
     const [decks, setDecks] = useState([])
-    const [cards, setCards] = useState([])
 
     useEffect(() => {
         const loadDecks = async () => {
