@@ -42,16 +42,27 @@ function Deck ({ deleteHandler }) {
 
     return (
         <>
-        <nav></nav>
-        <h3>{deck.name}</h3>
-        <p>{deck.description}</p>
-        <div className="bg-gray p-1">
-            <Link to={`/decks/${deckId}/edit`} className="btn btn-secondary mx-1">Edit</Link>
-            <Link to={`/decks/${deckId}/study`} className="btn btn-primary mx-1">Study</Link>
-            <Link to={`/decks/${deckId}/cards/new`} className='btn btn-success mx-1'>Add Card</Link>
-            <button className="btn btn-danger mx-1" onClick={() => deleteHandler(deckId)}>Delete</button>
+        <nav>
+        <ol className="breadcrumb">
+                <li className="breadcrumb-item">
+                    <Link to='/'>Home</Link>
+                </li>
+                <li className="breadcrumb-item active">{deck.name}</li>
+            </ol>
+        </nav>
+        <div className="card border-dark">
+            <h3 className="card-header text-center">{deck.name}</h3>
+            <p className="card-body">{deck.description}</p>
+            <div className="card-footer">
+                <div className="row justify-content-around">
+                    <Link to={`/decks/${deckId}/edit`} className="btn btn-secondary">Edit</Link>
+                    <Link to={`/decks/${deckId}/study`} className="btn btn-primary">Study</Link>
+                    <Link to={`/decks/${deckId}/cards/new`} className='btn btn-success'>Add Card</Link>
+                    <button className="btn btn-danger" onClick={() => deleteHandler(deckId)}>Delete</button>
+                </div>
+            </div>
         </div>
-        <div className="card-deck">
+        <div className="card-deck my-3">
             {cardItems}
         </div>
         </>
