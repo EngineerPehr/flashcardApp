@@ -22,7 +22,7 @@ function Layout() {
     loadDecks()
   }, [])
 
-  const deleteHandler = (id) => {
+  const deleteDeckHandler = (id) => {
     window.confirm('Delete this deck?\nYou will not be able to recover it.') ? deleteDeck(id) : console.log('Deletion cancelled')
   }
 
@@ -30,7 +30,6 @@ function Layout() {
     <>
       <Header />
       <div className="container">
-        {/* TODO: Implement the screen starting here */}
         <Switch>
           <Route path={'/decks/:deckId/study'}>
             <Study />
@@ -48,10 +47,10 @@ function Layout() {
             <EditCard />
           </Route>
           <Route path={'/decks/:deckId'}>
-            <Deck deleteHandler={deleteHandler} />
+            <Deck deleteHandler={deleteDeckHandler} />
           </Route>
           <Route exact path='/'>
-            <Home decks={decks} deleteHandler={deleteHandler} />
+            <Home decks={decks} deleteHandler={deleteDeckHandler} />
           </Route>
           <Route>
             <NotFound />
