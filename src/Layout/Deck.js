@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from "react"
 import { Link, useParams } from 'react-router-dom'
-import { readDeck, updateDeck, createCard, updateCard, deleteCard } from "../utils/api"
+import { readDeck, deleteCard } from "../utils/api"
 
 function Deck ({ deleteHandler }) {
     const { deckId } = useParams()
@@ -17,23 +17,32 @@ function Deck ({ deleteHandler }) {
             abortcontroller.abort()
         }
     }, [deckId])
+
+    const deleteCardHandler = async (id) => {
+        if (window.confirm('Delete this Card?\nYou will not be able to recover it.')) {
+            await deleteCard(id)
+            window.location.reload()
+          } else {
+            console.log('Card deletion cancelled')
+          }
+    }
     
     const cardItems = deck.cards?.map((card, i) => {
         return (
         <div className="card border-dark" key={i}>
             <div className="card-header text-center">
-                <h5>{`Card #${i+1}`}</h5>
+                <h3>{`Card #${i+1}`}</h3>
             </div>
             <div className="card-body">
-                <h6>Front:</h6>
+                <h4>Front:</h4>
                 <p>{card.front}</p>
-                <h6>Back:</h6>
+                <h4>Back:</h4>
                 <p>{card.back}</p>
             </div>
             <div className='card-footer'>
                 <div className="row justify-content-around">
                     <Link to={`/decks/${deckId}/cards/${card.id}/edit`} className='btn btn-secondary'>Edit</Link>
-                    <button className="btn btn-danger">Delete</button>
+                    <button className="btn btn-danger" onClick={() => deleteCardHandler(card.id)}>Delete</button>
                 </div>
             </div>
         </div>
@@ -51,7 +60,7 @@ function Deck ({ deleteHandler }) {
             </ol>
         </nav>
         <div className="card border-dark">
-            <h3 className="card-header text-center">{deck.name}</h3>
+            <h2 className="card-header text-center">{deck.name}</h2>
             <p className="card-body">{deck.description}</p>
             <div className="card-footer">
                 <div className="row justify-content-around">

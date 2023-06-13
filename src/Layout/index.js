@@ -22,8 +22,13 @@ function Layout() {
     loadDecks()
   }, [])
 
-  const deleteDeckHandler = (id) => {
-    window.confirm('Delete this deck?\nYou will not be able to recover it.') ? deleteDeck(id) : console.log('Deletion cancelled')
+  const deleteDeckHandler = async (id) => {
+    if (window.confirm('Delete this deck?\nYou will not be able to recover it.')) {
+      await deleteDeck(id)
+      window.location.reload()
+    } else {
+      console.log('Deck deletion cancelled')
+    }
   }
 
   return (

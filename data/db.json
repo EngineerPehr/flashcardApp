@@ -9,11 +9,6 @@
       "id": 2,
       "name": "React Router",
       "description": "Editted React Router Deck"
-    },
-    {
-      "name": "New Deck",
-      "description": "New Deck without Cards",
-      "id": 3
     }
   ],
   "cards": [
@@ -53,12 +48,6 @@
       "back": "b",
       "deckId": 1,
       "id": 7
-    },
-    {
-      "front": "Why did the chicken cross the road?",
-      "back": "Because....",
-      "deckId": 2,
-      "id": 8
     }
   ]
 }
