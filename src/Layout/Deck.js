@@ -16,7 +16,7 @@ function Deck ({ deleteHandler }) {
         return () => {
             abortcontroller.abort()
         }
-    }, [deck])
+    }, [deckId])
     
     // const cards = deck.cards
     // const cardItems = cards.map((card, i) => {

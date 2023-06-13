@@ -20,7 +20,7 @@ function Layout() {
       setDecks(data)
     }
     loadDecks()
-  }, [decks])
+  }, [])
 
   const deleteHandler = (id) => {
     window.confirm('Delete this deck?\nYou will not be able to recover it.') ? deleteDeck(id) : console.log('Deletion cancelled')
