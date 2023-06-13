@@ -1,15 +1,14 @@
 import React, { useState, useEffect} from "react"
 import { Link, useParams } from 'react-router-dom'
-import { readDeck, updateDeck, createCard, updateCard, deleteCard } from "../utils/api"
+import { readDeck, createCard } from "../utils/api"
 
 function AddCard () {
     const { deckId } = useParams()
-    const initialCardData = {
+    const initialCard = {
         front: '',
         back: '',
-        deckId
     }
-    const [cardData, setCardData] = useState(initialCardData)
+    const [card, setCard] = useState(initialCard)
     const [deck, setDeck] = useState({})
     useEffect(() => {
         const abortcontroller = new AbortController()
@@ -23,7 +22,13 @@ function AddCard () {
         }
     }, [deck])
     const changeHandler = ({target}) => {
-        setCardData({...cardData, [target.name]: target.value})
+        setCard({...card, [target.name]: target.value})
+    }
+    const submitHandler = async (event) => {
+        event.preventDefault()
+        await createCard(deckId, card)
+        setCard(initialCard)
+        console.log('Card created')
     }
     return (
         <>
@@ -40,15 +45,15 @@ function AddCard () {
         </nav>
         <div className="card border-dark">
             <h2 className="card-header">Add Card</h2>
-            <form>
+            <form onSubmit={submitHandler}>
                 <div className="card-body">
                     <div className="form-group">
                         <label htmlFor='front'>Front:</label>
-                        <textarea name='front' className="form-control" onChange={changeHandler} />
+                        <textarea name='front' className="form-control" value={card.front} onChange={changeHandler} />
                     </div>
                     <div className='form-group'>
                         <label htmlFor='back'>Back:</label>
-                        <textarea name='back' className="form-control" onChange={changeHandler} />
+                        <textarea name='back' className="form-control" value={card.back} onChange={changeHandler} />
                     </div>
                 </div>
                 <div className="card-footer">
