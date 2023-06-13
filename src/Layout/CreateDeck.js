@@ -29,19 +29,25 @@ function CreateDeck ({ decks, setDecks }) {
                 <li className="breadcrumb-item active">Create Deck</li>
             </ol>
         </nav>
-        <h2>Create Deck</h2>
-        <form onSubmit={submitHandler}>
-            <div className="form-group">
-                <label htmlFor='name'>Name:</label>
-                <input name='name' type='text' className="form-control" onChange={changeHandler}/>
-            </div>
-            <div className='form-group'>
-                <label htmlFor='description'>Description:</label>
-                <textarea name='description' className="form-control" onChange={changeHandler}></textarea>
-            </div>
-            <button type='reset' className="btn btn-secondary mx-1">Cancel</button>
-            <button type="submit" className="btn btn-primary mx-1">Submit</button>
-        </form>
+        <div className="card border-dark">
+            <h2 className="card-header">Create Deck</h2>
+            <form onSubmit={submitHandler}>
+                <div className="card-body">
+                    <div className="form-group">
+                        <label htmlFor='name'>Name:</label>
+                        <input name='name' type='text' className="form-control" onChange={changeHandler}/>
+                    </div>
+                    <div className='form-group'>
+                        <label htmlFor='description'>Description:</label>
+                        <textarea name='description' className="form-control" onChange={changeHandler}></textarea>
+                    </div>
+                </div>
+                <div className="card-footer">
+                    <Link to='/' className="btn btn-secondary mx-1">Cancel</Link>
+                    <button type="submit" className="btn btn-primary mx-1">Submit</button>
+                </div>
+            </form>
+        </div>
         </>
     )
 }

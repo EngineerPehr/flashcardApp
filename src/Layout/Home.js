@@ -7,7 +7,7 @@ function Home ({ decks, deleteHandler}) {
         <li className='card border-dark my-3 w-75' key={i}>
             <div className='card-header text-center'>
                 <h3 className='card-title'>{deck.name}</h3>
-                <p className='card-subtitle'>{`${deck.cards.length} cards`}</p>
+                <p className='card-subtitle'>{`${deck.cards?.length} cards`}</p>
             </div>
             <div className='card-body'>
                 <p className='card-text'>{deck.description}</p>

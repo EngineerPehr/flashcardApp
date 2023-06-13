@@ -2,13 +2,18 @@
   "decks": [
     {
       "id": 1,
-      "name": "Rendering in React",
-      "description": "React's component structure allows for quickly building a complex web application that relies on DOM manipulation. "
+      "name": "Rendering in React (Editted)",
+      "description": "React's component structure allows for quickly building a complex web application that relies on DOM manipulation. (Editted)"
     },
     {
       "id": 2,
-      "name": "Pumpkin",
-      "description": "Pie"
+      "name": "React Router",
+      "description": "Editted React Router Deck"
+    },
+    {
+      "name": "New Deck",
+      "description": "New Deck without Cards",
+      "id": 3
     }
   ],
   "cards": [
