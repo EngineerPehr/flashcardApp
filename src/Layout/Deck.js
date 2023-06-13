@@ -66,7 +66,7 @@ function Deck ({ deleteHandler }) {
                 <div className="row justify-content-around">
                     <Link to={`/decks/${deckId}/edit`} className="btn btn-secondary">Edit</Link>
                     <Link to={`/decks/${deckId}/study`} className="btn btn-primary">Study</Link>
-                    <Link to={`/decks/${deckId}/cards/new`} className='btn btn-success'>Add Card</Link>
+                    <Link to={`/decks/${deckId}/cards/new`} className='btn btn-success'>Add Cards</Link>
                     <button className="btn btn-danger" onClick={() => deleteHandler(deckId)}>Delete</button>
                 </div>
             </div>

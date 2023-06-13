@@ -31,7 +31,7 @@ function EditCard () {
     return (
         <>
         <nav>
-        <ol className="breadcrumb">
+            <ol className="breadcrumb">
                 <li className="breadcrumb-item">
                     <Link to='/'>Home</Link>
                 </li>
