@@ -1,33 +1,31 @@
 import React, { useState, useEffect} from "react"
 import { Link, useParams } from 'react-router-dom'
 import { readDeck, createCard } from "../utils/api"
+import CardForm from "./CardForm"
 
 function AddCard () {
     const { deckId } = useParams()
-    const initialCard = {
+    const blankCard = {
         front: '',
         back: '',
     }
-    const [card, setCard] = useState(initialCard)
+    const [card, setCard] = useState({})
     const [deck, setDeck] = useState({})
     useEffect(() => {
         const abortcontroller = new AbortController()
         const loadDeck = async () => {
-            const data = await readDeck(deckId)
-            setDeck(data)
+            const deckData = await readDeck(deckId)
+            setDeck(deckData)
         }
         loadDeck()
         return () => {
             abortcontroller.abort()
         }
     }, [deck])
-    const changeHandler = ({target}) => {
-        setCard({...card, [target.name]: target.value})
-    }
     const submitHandler = async (event) => {
         event.preventDefault()
         await createCard(deckId, card)
-        setCard(initialCard)
+        setCard(blankCard)
         console.log('Card created')
     }
     return (
@@ -45,22 +43,7 @@ function AddCard () {
         </nav>
         <div className="card border-dark">
             <h2 className="card-header">Add Card</h2>
-            <form onSubmit={submitHandler}>
-                <div className="card-body">
-                    <div className="form-group">
-                        <label htmlFor='front'>Front:</label>
-                        <textarea name='front' className="form-control" value={card.front} onChange={changeHandler} />
-                    </div>
-                    <div className='form-group'>
-                        <label htmlFor='back'>Back:</label>
-                        <textarea name='back' className="form-control" value={card.back} onChange={changeHandler} />
-                    </div>
-                </div>
-                <div className="card-footer">
-                    <Link to={`/decks/${deckId}`} className="btn btn-secondary mx-1">Done</Link>
-                    <button type="submit" className="btn btn-primary mx-1">Save</button>
-                </div>
-            </form>
+            <CardForm deckId={deckId} card={card} setCard={setCard} submitHandler={submitHandler} add={true}/>
         </div>
         </>
     )

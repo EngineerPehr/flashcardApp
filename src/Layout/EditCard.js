@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from "react"
 import { Link, useParams, useHistory } from 'react-router-dom'
 import { readDeck, readCard, updateCard } from "../utils/api"
+import CardForm from "./CardForm"
 
 function EditCard () {
     const history = useHistory()
@@ -20,9 +21,6 @@ function EditCard () {
             abortcontroller.abort()
         }
     }, [deckId, cardId])
-    const changeHandler = ({target}) => {
-        setCard({...card, [target.name]: target.value})
-    }
     const submitHandler = async (event) => {
         event.preventDefault()
         await updateCard(card)
@@ -43,22 +41,7 @@ function EditCard () {
         </nav>
         <div className="card border-dark">
             <h2 className="card-header">Edit Card</h2>
-            <form onSubmit={submitHandler}>
-                <div className="card-body">
-                    <div className="form-group">
-                        <label htmlFor='front'>Front:</label>
-                        <textarea name='front' className="form-control" value={card.front} onChange={changeHandler} />
-                    </div>
-                    <div className='form-group'>
-                        <label htmlFor='back'>Back:</label>
-                        <textarea name='back' className="form-control" value={card.back} onChange={changeHandler} />
-                    </div>
-                </div>
-                <div className="card-footer">
-                    <Link to={`/decks/${deckId}`} className="btn btn-secondary mx-1">Cancel</Link>
-                    <button type="submit" className="btn btn-primary mx-1">Submit</button>
-                </div>
-            </form>
+            <CardForm deckId={deckId} card={card} setCard={setCard} submitHandler={submitHandler} add={false}/>
         </div>
         </>
     )

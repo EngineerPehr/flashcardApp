@@ -27,7 +27,7 @@
 
 ### DeckForm
 
-    This component is used by CreateDeck and EditDeck to create a set of deck data that is used to generate a new form or update and existing form, respectively. It is passed a deck object, a setDeck function to pass the altered deck back to CreateDeck or EditDeck, and the parent component's respective submitHandler. Submits are handled by the parent component due to the difference in functionallity.
+    This component is used by CreateDeck and EditDeck to create a set of deck data that is used to generate a new deck or update an existing deck, respectively. It is passed a deck object, a setDeck function to pass the altered deck back to CreateDeck or EditDeck, and the parent component's respective submitHandler. Submits are handled by the parent component due to the difference in functionallity.
 
 ### CreateDeck
 
@@ -53,7 +53,13 @@
 
     This is a Qualified-provided helper function. It takes a deck's id and an object with the updated name and description. It then updates the specified deck within the API via a PUT.
 
+### CardForm
+
+    This component is used by AddCard and EditCard to create a set of card data that is used to generate a new card or update an existing card, respectively. It is passed a deck id, a card object, a setDeck function to pass the altered card back to AddCard or EditCard, the parent component's respective submitHandler, and add, a boolean for if a card is being added versus edited. Submits are handled by the parent component due to the difference in functionallity. The controls at the bottom are toggle based on the value of add, with true rendering Save and Done buttons while false renders Submit and Cancel buttons.
+
 ### AddCard
+
+    
 
 ### Study
 

@@ -1,13 +1,13 @@
 // Imports
-import React, { useState, useEffect} from "react"
-import { Switch, Route } from "react-router-dom"
-import { listDecks, deleteDeck } from "../utils/api"
-import Header from "./Header"
-import NotFound from "./NotFound"
-import Home from "./Home"
-import Study from "./Study"
-import CreateDeck from "./CreateDeck"
-import Deck from "./Deck"
+import React, { useState, useEffect} from 'react'
+import { Switch, Route } from 'react-router-dom'
+import { listDecks, deleteDeck } from '../utils/api'
+import Header from './Header'
+import NotFound from './NotFound'
+import Home from './Home'
+import Study from './Study'
+import CreateDeck from './CreateDeck'
+import Deck from './Deck'
 import EditDeck from './EditDeck'
 import AddCard from './AddCard'
 import EditCard from './EditCard'
@@ -40,7 +40,7 @@ function Layout() {
   return (
     <>
       <Header />
-      <div className="container">
+      <div className='container'>
         <Switch>
           <Route path={'/decks/:deckId/study'}>
             <Study />
@@ -58,10 +58,10 @@ function Layout() {
             <EditCard />
           </Route>
           <Route path={'/decks/:deckId'}>
-            <Deck deleteHandler={deleteDeckHandler} />
+            <Deck deleteDeckHandler={deleteDeckHandler} />
           </Route>
           <Route exact path='/'>
-            <Home decks={decks} deleteHandler={deleteDeckHandler} />
+            <Home decks={decks} deleteDeckHandler={deleteDeckHandler} />
           </Route>
           <Route>
             <NotFound />
