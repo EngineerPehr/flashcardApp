@@ -26,7 +26,7 @@ function AddCard () {
         return () => {
             abortcontroller.abort()
         }
-    }, [deck])
+    }, [deckId])
 
     // Creates the card in the API and resets the form
     const submitHandler = async (event) => {
