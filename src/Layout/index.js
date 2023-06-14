@@ -26,8 +26,9 @@ function Layout() {
     if (window.confirm('Delete this deck?\nYou will not be able to recover it.')) {
       await deleteDeck(id)
       window.location.reload()
+      console.log(`Deck ID: ${id} - Deleted`)
     } else {
-      console.log('Deck deletion cancelled')
+      console.log(`Deck ID: ${id} - Deletion Cancelled`)
     }
   }
 
