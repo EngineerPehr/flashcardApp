@@ -28,6 +28,7 @@ function CreateDeck ({ decks, setDecks }) {
                 <li className="breadcrumb-item active">Create Deck</li>
             </ol>
         </nav>
+        {/* DeckForm Access */}
         <div className="card border-dark">
             <h2 className="card-header">Create Deck</h2>
             <DeckForm deck={deck} setDeck={setDeck} submitHandler={submitHandler} />
