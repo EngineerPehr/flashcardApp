@@ -9,22 +9,29 @@
 
 ### src/Layout/index.js
 
-    This file contains the React routing for the app. It also handles loading the flashcard decks from the API and passing that data to the files that need it. It does this via the use of both useState and useEffect. It also contains the deleteDeckHandler function.
+    This component contains the React routing for the app. It also handles loading the flashcard decks from the API and passing that data to the files that need it. It does this via the use of both `useState` and `useEffect`. It also contains the `deleteDeckHandler` function.
 
 #### deleteDeckHandler
 
     This function is the handler for when the user clicks on a deck's delete button. It presents the user with a modal confirmation window. If the user confirms the deletion, then it calls the deleteDeck function (presented below) and refreshes the page. It then logs ``Deck ID: ${id} - Deleted`` to the console. If the user cancels, then it logs ``Deck ID: ${id} - Deletion Cancelled``. The id variable refers to the deck's id property. These logs are included to aid in potential debugging.
 
+### Home
+
+    This component is the main hub and displays the decks given to it by `src/Layout/index` as separate cards, with controls to view, study, or delete the deck. Deletions are handled by `deleteDeckHandler`, which is passed in from `src/Layout/index` as `deleteHandler`. It also has access the `CreateDeck` component.
+
+### CreateDeck
+
+### Deck
+
 ### AddCard
 
-AddCard
-CreateDeck
-Deck
-EditCard
-EditDeck
-Home
-Study
-Helper Functions in src/utils/api/index.js
+### Study
+
+### EditDeck
+
+### EditCard
+
+### Helper Functions in src/utils/api/index.js
  - stripCards, fetchJson
  - listDecks
  - createDeck
@@ -35,4 +42,5 @@ Helper Functions in src/utils/api/index.js
  - readCard
  - updateCard
  - deleteCard
-Header, NotFound,
+
+### Header, NotFound,
