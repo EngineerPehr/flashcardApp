@@ -39,7 +39,7 @@
 
 ### Deck
 
-    This is a deck-specific hub component for all deck-related actions, such as editing the deck, adding/editing/deleting cards within the deck, or studying the deck. Only one deck is shown on this page at a time. A user can access this screen from the Home page or the CreateDeck page.
+    This is a deck-specific hub component for all deck-related actions, such as editing the deck, adding/editing/deleting cards within the deck, or studying the deck. Only one deck is shown on this page at a time. A user can access this screen from the Home page or the CreateDeck page. The cards associated with the deck are shown as well, if any exist.
 
 ### EditDeck
 
@@ -59,12 +59,27 @@
 
 ### AddCard
 
-    
+    This component uses CardForm to collect a front and back from the user for a new card. It then calls createCard to add the card to the deck within the API. Saving the card leaves the user on the AddCard page, so that they can add multiple cards at a time. The done button returns the user to the deck's page.
+
+#### createCard
+
+    This is a Qualified-provided helper function. It takes a deck id and an object with front and back keys, assigns it a card id, then adds the completed card to the API, associated with the given deck.
+
+### EditCard
+
+    This component allows a user to edit an existing card's front and/or back. It gets the current deck and card information via readDeck and readCard, then passes it down to the CardForm. The CardForm then passes the edited data back to EditCard, which uses updateCard to update the API.
+
+#### readCard
+
+    This is a Qualified-provided helper function. It takes a card's id and fetches the specified card from the API.
+
+#### updateCard
+
+    This is a Qualified-provided helper function. It takes a card object with the updated front and back. It pulls the id from the object, then updates the specified card within the API via a PUT.
 
 ### Study
 
-
-### EditCard
+    
 
 ### Helper Functions in src/utils/api/index.js
  - stripCards, fetchJson

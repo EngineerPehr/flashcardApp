@@ -1,16 +1,21 @@
-import React, { useState, useEffect} from "react"
+// Imports
+import React, { useState, useEffect} from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { readDeck, createCard } from "../utils/api"
-import CardForm from "./CardForm"
+import { readDeck, createCard } from '../utils/api'
+import CardForm from './CardForm'
 
+// Creates a new card via CardForm and returns it to the API.
 function AddCard () {
     const { deckId } = useParams()
+    // Blank card used to reset the form
     const blankCard = {
         front: '',
         back: '',
     }
     const [card, setCard] = useState({})
     const [deck, setDeck] = useState({})
+
+    // Fetches the specified deck from the API
     useEffect(() => {
         const abortcontroller = new AbortController()
         const loadDeck = async () => {
@@ -22,27 +27,30 @@ function AddCard () {
             abortcontroller.abort()
         }
     }, [deck])
+
+    // Creates the card in the API and resets the form
     const submitHandler = async (event) => {
         event.preventDefault()
         await createCard(deckId, card)
         setCard(blankCard)
-        console.log('Card created')
     }
     return (
         <>
+        {/* Breadcrumb navigation */}
         <nav>
-        <ol className="breadcrumb">
-                <li className="breadcrumb-item">
+            <ol className='breadcrumb'>
+                <li className='breadcrumb-item'>
                     <Link to='/'>Home</Link>
                 </li>
-                <li className="breadcrumb-item">
+                <li className='breadcrumb-item'>
                     <Link to={`/decks/${deckId}`}>{deck.name}</Link>
                 </li>
-                <li className="breadcrumb-item">Add Card</li>
+                <li className='breadcrumb-item'>Add Card</li>
             </ol>
         </nav>
-        <div className="card border-dark">
-            <h2 className="card-header">Add Card</h2>
+        {/* Card Form Access */}
+        <div className='card border-dark'>
+            <h2 className='card-header'>Add Card</h2>
             <CardForm deckId={deckId} card={card} setCard={setCard} submitHandler={submitHandler} add={true}/>
         </div>
         </>
