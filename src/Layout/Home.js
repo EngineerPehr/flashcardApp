@@ -3,7 +3,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 // Lists the decks as separate cards with the basic deck controls
-function Home ({ decks, deleteHandler}) {
+function Home ({ decks, deleteDeckHandler}) {
     const deckList = decks.map((deck, i) => {
     return (
         <li className='card border-dark my-3 w-75' key={i}>
@@ -21,7 +21,7 @@ function Home ({ decks, deleteHandler}) {
                     {/* Controls */}
                     <Link to={`/decks/${deck.id}`} className='btn btn-secondary'>View</Link>
                     <Link to={`/decks/${deck.id}/study`} className='btn btn-primary'>Study</Link>
-                    <button className='btn btn-danger' onClick={() => deleteHandler(deck.id)}>Delete</button>
+                    <button className='btn btn-danger' onClick={() => deleteDeckHandler(deck.id)}>Delete</button>
                 </div>
             </div>
         </li>

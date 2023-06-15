@@ -31,7 +31,7 @@ function CreateDeck ({ decks, setDecks }) {
         {/* DeckForm Access */}
         <div className="card border-dark">
             <h2 className="card-header">Create Deck</h2>
-            <DeckForm deck={deck} setDeck={setDeck} submitHandler={submitHandler} />
+            <DeckForm deck={deck} setDeck={setDeck} submitHandler={submitHandler} create={true}/>
         </div>
         </>
     )

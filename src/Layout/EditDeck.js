@@ -47,7 +47,7 @@ function EditDeck () {
         {/* DeckForm access */}
         <div className="card border-dark">
             <h2 className="card-header">Edit Deck</h2>
-            <DeckForm deck={deck} setDeck={setDeck} submitHandler={submitHandler} />
+            <DeckForm deck={deck} setDeck={setDeck} submitHandler={submitHandler} create={false}/>
         </div>
         </>
     )

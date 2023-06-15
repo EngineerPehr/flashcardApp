@@ -1,6 +1,6 @@
 // Imports
 import React, { useState, useEffect} from 'react'
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, useHistory } from 'react-router-dom'
 import { listDecks, deleteDeck } from '../utils/api'
 import Header from './Header'
 import NotFound from './NotFound'
@@ -14,6 +14,7 @@ import EditCard from './EditCard'
 
 // Contains the main routing and deck loading/deleting
 function Layout() {
+  const history = useHistory()
   const [decks, setDecks] = useState([])
 
   // Fetches the decks from the API
@@ -25,11 +26,12 @@ function Layout() {
     loadDecks()
   }, [])
 
-  // Calles deleteDeck to remove specified deck from API. Logs result to public.
+  // Calls deleteDeck to remove specified deck from API. Logs result to public.
   const deleteDeckHandler = async (id) => {
     if (window.confirm('Delete this deck?\nYou will not be able to recover it.')) {
       await deleteDeck(id)
-      window.location.reload()
+      // Reloads the Home page or returns the user to the Home page
+      window.location.pathname === '/' ? window.location.reload() : history.push('/')
       console.log(`Deck ID: ${id} - Deleted`)
     } else {
       console.log(`Deck ID: ${id} - Deletion Cancelled`)

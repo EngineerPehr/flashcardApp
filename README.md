@@ -15,7 +15,7 @@ This is a Qualified-provided helper function. It fetches the array of decks from
 
 #### deleteDeckHandler
 
-This function is the handler for when the user clicks on a deck's delete button. It presents the user with a modal confirmation window. If the user confirms the deletion, then it calls the `deleteDeck` function (presented below) and refreshes the page. It then logs ``Deck ID: ${id} - Deleted`` to the console. If the user cancels, then it logs ``Deck ID: ${id} - Deletion Cancelled``. The id variable refers to the deck's id property. These logs are included to aid in potential debugging.
+This function is the handler for when the user clicks on a deck's delete button. It presents the user with a modal confirmation window. If the user confirms the deletion, then it calls the `deleteDeck` function. The page then returns the user to the `Home` page, or refreshes the page if the user is already on the `Home` page. It then logs ``Deck ID: ${id} - Deleted`` to the console. If the user cancels, the page is neither changed nor refreshed, and the function logs ``Deck ID: ${id} - Deletion Cancelled``. The id variable refers to the deck's id property. These logs are included to aid in potential debugging.
 
 #### deleteDeck
 
@@ -27,7 +27,7 @@ This component is the main hub and displays the decks given to it by `src/Layout
 
 ### DeckForm
 
-This component is used by `CreateDeck` and `EditDeck` to create a set of deck data that is used to generate a new deck or update an existing deck, respectively. It is passed a deck object, a `setDeck` function to pass the altered deck back to `CreateDeck` or `EditDeck`, and the parent component's respective `submitHandler`. Submits are handled by the parent component due to the difference in functionallity.
+This component is used by `CreateDeck` and `EditDeck` to create a set of deck data that is used to generate a new deck or update an existing deck, respectively. It is passed a deck object, a `setDeck` function to pass the altered deck back to `CreateDeck` or `EditDeck`, the parent component's respective `submitHandler`, and `create`, a boolean for if the deck is being created or edited. Submits are handled by the parent component due to the difference in functionallity. The `Cancel` button is toggled by the value of `create`, with true returning the user to the `Home` page and false returning the user to the `Deck` page.
 
 ### CreateDeck
 
@@ -59,7 +59,7 @@ This is a Qualified-provided helper function. It takes a deck's id and an object
 
 ### CardForm
 
-This component is used by `AddCard` and `EditCard` to create a set of card data that is used to generate a new card or update an existing card, respectively. It is passed a deck id, a card object, a `setCard` function to pass the altered card back to `AddCard` or `EditCard`, the parent component's respective `submitHandler`, and add, a boolean for if a card is being added versus edited. Submits are handled by the parent component due to the difference in functionallity. The controls at the bottom are toggle based on the value of add, with true rendering `Save` and `Done` buttons while false renders `Submit` and `Cancel` buttons.
+This component is used by `AddCard` and `EditCard` to create a set of card data that is used to generate a new card or update an existing card, respectively. It is passed a deck id, a card object, a `setCard` function to pass the altered card back to `AddCard` or `EditCard`, the parent component's respective `submitHandler`, and add, a boolean for if a card is being added versus edited. Submits are handled by the parent component due to the difference in functionallity. The controls at the bottom are toggled based on the value of add, with true rendering `Save` and `Done` buttons while false renders `Submit` and `Cancel` buttons.
 
 ### AddCard
 
