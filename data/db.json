@@ -9,6 +9,11 @@
       "id": 2,
       "name": "React Router",
       "description": "React Router Deck"
+    },
+    {
+      "name": "Pies",
+      "description": "Pies are the best",
+      "id": 3
     }
   ],
   "cards": [
@@ -47,6 +52,24 @@
       "back": "b",
       "deckId": 1,
       "id": 6
+    },
+    {
+      "front": "Apple",
+      "back": "Pie",
+      "deckId": 3,
+      "id": 7
+    },
+    {
+      "front": "Pumpkin",
+      "back": "Pie",
+      "deckId": 3,
+      "id": 8
+    },
+    {
+      "front": "Cherry",
+      "back": "Pie",
+      "deckId": 3,
+      "id": 9
     }
   ]
 }

@@ -26,7 +26,7 @@ function Layout() {
     loadDecks()
   }, [])
 
-  // Calls deleteDeck to remove specified deck from API. Logs result to public.
+  // Calls deleteDeck to remove specified deck from API. Logs result to console.
   const deleteDeckHandler = async (id) => {
     if (window.confirm('Delete this deck?\nYou will not be able to recover it.')) {
       await deleteDeck(id)
